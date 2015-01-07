@@ -1,0 +1,26 @@
+﻿@model BaseWebTamplate.Models.Vijest
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<p>Prijenos podataka modelom</p>
+    <ul>
+        <li>@Model.Autor</li>
+        <li>@Model.Naslov</li>
+        <li>@Model.Sadrzaj</li>
+        <li>@Model.Timestamp</li>
+    </ul>
+
+
+<p>Prijenos podatka ViewBagom i ViewData</p>
+
+<ul>
+@foreach (var item in (List<string>)ViewData["countries"])
+{
+    <li>@item</li>
+}
+</ul>

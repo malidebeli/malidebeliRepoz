@@ -1,0 +1,20 @@
+﻿@model  IList<WebLibrary.Post>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Naslopvna stranica sa postovima</h2>
+
+
+
+    @foreach (var item in Model)
+    {
+        <div>
+            <h2>@item.naziv</h2>
+            <p>@item.sadrzaj</p>
+            <i>@item.autor</i>
+            @*<i>@item.timestamp</i>*@
+        </div>
+        <hr />
+    }
