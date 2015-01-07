@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WebLibrary
 {
@@ -20,7 +21,7 @@ namespace WebLibrary
 
         public static List<Post> getTopPosts()
         {
-            SqlCommand stringCommand = new SqlCommand(@"SELECT TOP 5 p.[PostID],p.[Naziv],p.[Sadrzaj],a.[Ime] +' '+a.[Prezime] as 'ImePrezime',p.[Timestamp]  
+            SqlCommand stringCommand = new SqlCommand(@"SELECT TOP "+ ConfigurationManager.AppSettings["brojPostova"]+@" p.[PostID],p.[Naziv],p.[Sadrzaj],a.[Ime] +' '+a.[Prezime] as 'ImePrezime',p.[Timestamp]  
                                                         FROM [dbo].[Postovi]  as p inner join [dbo].[Autor] as a 
                                                         on p.Autor = a.AutorId  order by p.[Timestamp] desc");
             DataTable dt = WebLibrary.DBObjects.DB.GetData1(stringCommand);
